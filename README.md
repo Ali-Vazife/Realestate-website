@@ -25,6 +25,11 @@ Welcome to the RealEstate Website, your go-to platform for exploring captivating
 - **Map Integration:**
   - Users can explore all listed properties on a map, providing a visual representation with geographical coordinates.
 
+## Project Demo
+
+Check out our project in action! Watch the demo GIF: 
+![GIF](https://github.com/Ali-Vazife/Realstate-website/blob/main/website.gif)
+
 ## Getting Started
 
 1. **Installation:**
