@@ -1,0 +1,77 @@
+extends base
+block append head
+  meta(name='robots', content='noindex,follow')
+
+mixin navItem(link, text, active)
+  li(class=`${active ? 'side-nav--active' : ''}`)
+    a(href=`${link}`)
+      svg
+      | #{text}
+
+block content
+  link(rel='stylesheet' href='/style/account.css')
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/me', 'تنظیمات', true)
+          li
+            a.nav__el.nav__el--logout خروج از حساب
+        - if (user.role === 'admin')
+          .admin-nav
+            h5.admin-nav__heading ادمین
+            ul.side-nav
+              +navItem('/me/new_house', 'اضافه کردن ملک جدید')
+              +navItem('/me/delete_update_house', 'حذف ملک از سایت')
+              +navItem('/admin/unapproved', 'تایید ملک کاربران')
+        - if (user.role === 'lead')
+          .admin-nav
+            h5.admin-nav__heading ثبت ملک
+            ul.side-nav
+              +navItem('/me/new_house', 'اضافه کردن ملک جدید')
+
+      .user-view__content
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md تنظیمات حساب شما
+          - if (user.role === 'user')
+            form.form.form-verifying-user
+              .form__group
+                label.form__label(for='code') برای ثبت آگهی شما باید شماره تلفن خود را تایید کنید. برای این کار روی "دریافت کد" کلیک کنید. کد به شماره ثبت شده شما ارسال می  شود. سپس کد را در فیلد زیر وارد کنید و روی "ثبت کد" کلیک کنید.
+                input#code-input.form__input(type='text', placeholder='کد پیامک شده را وارد کنید.', name='code', required)
+              .form__group.right.form__group-btns
+                button.submitCode.btn.btn--small.btn--green(type='submit') ثبت کد
+                a.recieveCode.btn.btn--small.btn--green دریافت کد
+                a.resendCode.btn.btn--small.btn--green دریافت مجدد کد
+
+            .line &nbsp;
+
+          form.form.form-user-data
+            .form__group
+              label.form__label(for='name') نام
+              input#name.form__input(type='text', value=`${user.name}`, required, name='name')
+            .form__group.form__photo-upload
+              img.form__user-photo(src=`/img/users/${user.photo}`, alt='User photo')
+              input.form__upload(type='file', accept='image/*', id='photo', name='photo')
+              label(for='photo') اضافه کرن تصویر پروفایل
+              
+            .form__group.right
+              button.btn.btn--small.btn--green ذخیره کردن تنظیمات
+              
+        .line &nbsp;
+        
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md تغییر رمز
+          form.form.form-user-password
+            .form__group
+              label.form__label(for='password-current') پسورد فعلی
+              input#password-current.form__input(type='password', placeholder='••••••••', required, minlength='8')
+            .form__group
+              label.form__label(for='password') پسورد جدید
+              input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+            .form__group.ma-bt-lg
+              label.form__label(for='password-confirm') پسورد جدید رو دوباره وارد کنید
+              input#password-confirm.form__input(type='password', placeholder='••••••••', required, minlength='8')
+            .form__group.right
+              button.btn.btn--small.btn--green.btn--save-password ذخیره کردن تغییرات
+
+  script(src='js/index.js')

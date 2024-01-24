@@ -1,0 +1,65 @@
+.contactUs-container {
+  display: flex;
+  /* text-align: center; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #06ce3e; */
+}
+.contact-information-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact-svg {
+  width: 30rem;
+  height: 40rem;
+}
+.cantactus-header {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin-bottom: 4rem;
+}
+.contact-text p {
+  font-size: 1.6rem;
+}
+
+.second-about {
+  display: none;
+}
+
+@media screen and (max-width: 29.9em) {
+  .contact-information-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact-text {
+    order: 2;
+    align-self: flex-start;
+    margin-top: 2rem;
+  }
+  .contact-svg-container {
+    order: 1;
+    align-self: flex-end;
+  }
+  .cantactus-header {
+    font-size: 2.6rem;
+    font-weight: 800;
+    margin-bottom: 4rem;
+  }
+  .contact-text p {
+    font-size: 1.8rem;
+  }
+
+  .contact-svg {
+    width: 40rem;
+    height: 50rem;
+  }
+
+  .second-about {
+    display: block;
+    background-color: #fff;
+    height: 34vh;
+  }
+}

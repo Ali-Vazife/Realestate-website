@@ -1,0 +1,385 @@
+/**************************/
+/* BELOW 1270px  */
+/**************************/
+
+@media (max-width: 80em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+/**************************/
+/* BELOW 1154px */
+/**************************/
+
+@media (max-width: 72em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+/**************************/
+/* BELOW 1040px  */
+/**************************/
+
+@media (max-width: 65em) {
+  html {
+    font-size: 46.13%;
+  }
+}
+
+/**************************/
+/* BELOW 985px  */
+/**************************/
+@media (max-width: 61.5em) {
+  html {
+    font-size: 42.5%;
+  }
+  /* .menu-nav-mobile {
+    display: block;
+  } */
+}
+
+/**************************/
+/* BELOW 808px  */
+/**************************/
+
+@media (max-width: 51em) {
+}
+
+/**************************/
+/* BELOW 752px */
+/**************************/
+@media (max-width: 47em) {
+  html {
+    font-size: 37.25%;
+  }
+  .googlemap iframe {
+    width: 90%;
+    height: 100%;
+  }
+}
+
+/**************************/
+/* BELOW 573px */
+/**************************/
+@media (max-width: 36em) {
+  html {
+    font-size: 35%;
+  }
+}
+
+/**************************/
+/* BELOW 479px */
+/**************************/
+
+@media screen and (max-width: 29.9em) {
+  html {
+    font-size: 30%;
+  }
+  .login {
+    text-align: center;
+    order: 2;
+    color: #06ce3e;
+    background-color: #06ce3e;
+    border: 1px solid #06ce3e;
+    border-radius: 2rem;
+    padding: 0.1rem 1.7rem;
+    margin-top: 1.2rem;
+    margin-right: 0.5rem;
+    align-self: baseline;
+  }
+  .signup {
+    order: 1;
+    color: #06ce3e;
+    align-self: center;
+    background-color: #ffffff;
+    border: 1px solid #06ce3e;
+    border-radius: 2rem;
+    padding: 0.1rem 0.6rem;
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+  }
+  .mainnav-menu {
+    padding: 1rem 0;
+  }
+  .mainnav-menu .nav-li {
+    margin-top: 1.6rem;
+  }
+  .mainnav-menu .nav-li::after {
+    content: '';
+    display: block;
+    border-bottom: 0.5px solid #c9c9c9b2;
+    width: 100%; /* Adjust this value to control the length of the line */
+    margin: auto 0; /*Center the line horizontally if needed */
+  }
+
+  .nav-item a {
+    font-size: 2.2rem;
+    font-weight: 800;
+  }
+  .navbar-toggler {
+    font-size: 2.2rem;
+    margin-left: 1rem;
+  }
+  .fa-brand {
+    font-size: 2.9rem;
+  }
+  .en-brand {
+    font-size: 1.6rem;
+  }
+  .navbar-toggler-icon {
+    width: 2em;
+    height: 1.8em;
+  }
+  .navbar-nav .nav__el span {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  /* .logout-large-screen {
+    display: block;
+  }
+  .logout-small-screen {
+    display: none;
+  } */
+  .navbar-brand {
+    margin-right: 0;
+    margin-left: 3.7rem;
+  }
+  .homepage-backimg {
+    min-height: 60vh;
+  }
+  .modal-header .btn-close {
+    font-size: 2.8rem;
+    margin: -0.5rem auto -0.5rem 1rem;
+  }
+  .filterhouse {
+    margin: 2rem 0 2rem 0rem;
+  }
+  .filterhouse .filter-button {
+    border-radius: 0 2px 2px 0;
+    padding: 1rem 2.4rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: black;
+  }
+  .search-form {
+    width: 94%;
+    min-height: 18vh;
+    bottom: -7%;
+    right: 3%;
+  }
+  .search-select-btn .select-button {
+    font-size: 1.7rem;
+    font-weight: 800;
+  }
+  .search-header-text {
+    font-size: 1.6rem;
+  }
+  .filter-button {
+    font-size: 1.6rem;
+  }
+  .search-button-div .search-svg {
+    width: 4.2rem;
+  }
+  .navbar-main-container {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .brand-text {
+    margin-right: 0;
+  }
+  .logosvg {
+    display: none;
+  }
+  .search-header {
+    margin: 2rem 1rem;
+  }
+  /* .last-card {
+    justify-content: center;
+    align-items: center;
+  } */
+  .about-text-div {
+    align-self: center;
+    padding-right: 1rem;
+  }
+  .about-text-header {
+    margin-bottom: 1.6rem;
+    font-weight: 800;
+  }
+  .last-card-info p {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+  .last-rent-svg {
+    width: 8px;
+    height: 8px;
+  }
+  .last-imgs {
+    height: 27vw;
+  }
+  .google-map {
+    width: 220px;
+  }
+  .cta-text {
+    padding-left: 0;
+    margin-right: 6rem;
+  }
+  .cantactus-footer {
+    font-size: 2rem;
+  }
+  .modal-bodys {
+    display: none;
+  }
+  /*  */
+  .img-square-wrapper {
+    max-height: 19rem;
+  }
+  .card-rent-ul .rent-card-svg,
+  .card-buy-ul .buy-card-svg {
+    width: 11px;
+    margin-left: 0.6rem;
+  }
+  /* .card-rent-ul {
+    display: flex;
+  } */
+
+  ul.card-rent-ul,
+  ul.card-buy-ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+  }
+  .card-rent-body .view-card-link {
+    padding: 0.5rem 2rem;
+    font-size: 1.8rem;
+
+    font-weight: 600;
+  }
+  .card-buy-body .view-card-link {
+    padding: 0.5rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  li.mb-1.fs-4,
+  li.fs-5 {
+    flex: 0 0 calc(50% - 10px); /* 50% width minus some spacing (adjust as needed) */
+    margin-bottom: 1rem; /* Add margin between items */
+  }
+  .card-rent-ul li span,
+  .card-buy-ul li span {
+    font-size: 1.6rem;
+    font-weight: 800;
+  }
+  .house-info-title .house-code {
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+  .house-info-title h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+  .house-info-title {
+    margin-top: 1.8rem;
+  }
+  .info-list-container ul li {
+    font-size: 1.7rem;
+    font-weight: 600;
+  }
+  .info-address {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  .text-description-container .more-infor-text {
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+  /* account queries */
+  .admin-nav ul {
+    padding-right: 0;
+  }
+  .user-view .user-view__menu {
+    -webkit-box-flex: 19rem;
+    flex: 19rem 0 0;
+    padding: 1rem 0;
+  }
+  .user-view__content .user-view__form-container {
+    padding: 0 2rem;
+  }
+  .form__group .label-pair {
+    width: 20%;
+    font-size: 1.6rem;
+    margin-right: 0;
+  }
+  .form__group .select-pair {
+    width: 40%;
+    padding: 1rem 0;
+  }
+  .form__group .input-pair {
+    width: 50%;
+    padding: 0.7rem 0;
+  }
+  /* filter btn */
+  .filterhouse {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .tell-number-btn {
+    font-size: 3rem;
+  }
+  .tell-number-p {
+    font-size: 2.4rem;
+    font-weight: 800;
+    padding: 1.4rem 0;
+  }
+
+  #salePrice,
+  #saleSize,
+  #saleRoom,
+  #saleFloor,
+  #saleAge,
+  #rentRentPrice,
+  #rentMortgagePrice,
+  #rentSize,
+  #rentRoom,
+  #rentFloor,
+  #rentAge {
+    width: 20%;
+    /* padding: 1rem; */
+  }
+  #saleElevator,
+  #saleParking,
+  #saleBuildingStatus,
+  #saleStoreroom,
+  #rentElevator,
+  #rentParking,
+  #rentBuildingStatus,
+  #rentStoreroom {
+    width: 12%;
+  }
+  .widget3 h5 {
+    padding-right: 2rem;
+  }
+  .cta-text-pic {
+    display: none;
+  }
+  .text-pic {
+    display: none;
+  }
+}
+
+/**************************/
+/* BELOW 310px */
+/**************************/
+@media (max-width: 19.37em) {
+  html {
+    font-size: 30%;
+  }
+  .homepage-backimg {
+    min-height: 39vh;
+  }
+}

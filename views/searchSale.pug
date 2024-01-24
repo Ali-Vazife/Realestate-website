@@ -1,0 +1,178 @@
+extends base
+
+mixin buildingTypeText(buildingType)
+  case buildingType
+    when 'apartment'
+      | نوع: آپارتمان
+    when 'edari'
+      | نوع: اداری
+    when 'tejari'
+      | نوع: تجاری
+    when 'villa'
+      | نوع: ویلا
+    when 'zeraei'
+      | نوع: زراعی
+    default
+      | نوع: غیره
+
+block content
+  link(rel='stylesheet' href='/style/rentbuy.css')
+  section
+    .top-filter-rent
+      .modal-bodys
+        form#searchForm
+          .top-filter-div
+            label(for='city') شهر:
+            select#city(name='city')
+              option(value='Shiraz') شیراز
+            label(for='building-type') نوع ملک:
+            select#building-type(name='building-type')
+              option(value='apartment') آپارتمان مسکونی
+              option(value='edari') دفتر کار اداری
+              option(value='tejari') مغازه و تجاری
+              option(value='villa') خانه و ویلا
+              option(value='zeraei') زراعی
+              option(value='other') غیره
+
+            label(for='min-buy') بازه قیمت:
+            .buy-inputs
+              select#min-buy-select
+                option(value='0') حداقل
+                option(value='50') 50 میلیون
+                option(value='70') 70 میلیون
+                option(value='100') 100 میلیون
+                option(value='150') 150 میلیون
+                option(value='200') 200 میلیون
+                option(value='300') 300 میلیون
+                option(value='400') 400 میلیون
+                option(value='500') 500 میلیون
+                option(value='600') 600 میلیون
+                option(value='700') 700 میلیون
+                option(value='800') 800 میلیون
+                option(value='900') 900 میلیون
+                option(value='1000') 1 میلیارد
+                option(value='2000') 2 میلیارد
+                option(value='3000') 3 میلیارد
+                option(value='4000') 4 میلیارد
+                option(value='5000') 5 میلیارد
+                option(value='10000') 10 میلیارد
+              span.range-separator -
+              select#max-buy-select
+                option(value='0') حداکثر
+                option(value='50') 50 میلیون
+                option(value='70') 70 میلیون
+                option(value='100') 100 میلیون
+                option(value='150') 150 میلیون
+                option(value='200') 200 میلیون
+                option(value='300') 300 میلیون
+                option(value='400') 400 میلیون
+                option(value='500') 500 میلیون
+                option(value='600') 600 میلیون
+                option(value='700') 700 میلیون
+                option(value='800') 800 میلیون
+                option(value='900') 900 میلیون
+                option(value='1000') 1 میلیارد
+                option(value='2000') 2 میلیارد
+                option(value='3000') 3 میلیارد
+                option(value='4000') 4 میلیارد
+                option(value='5000') 5 میلیارد
+                option(value='10000') 10 میلیارد
+            label(for='min-size') متراژ:
+            .size-inputs
+              select#min-size-select
+                option(value='0') حداقل
+                option(value='50') 50 مترمربع
+                option(value='60') 60 مترمربع
+                option(value='70') 70 مترمربع
+                option(value='80') 80 مترمربع
+                option(value='90') 90 مترمربع
+                option(value='100') 100 مترمربع
+                option(value='150') 150 مترمربع
+                option(value='200') 200 مترمربع
+                option(value='250') 250 مترمربع
+                option(value='300') 300 مترمربع
+                option(value='400') 400 مترمربع
+                option(value='500') 500 مترمربع
+                option(value='500') 600 مترمربع
+                option(value='500') 700 مترمربع
+                option(value='500') 800 مترمربع
+                option(value='500') 900 مترمربع
+                option(value='500') 1000 مترمربع
+              span.range-separator -
+              select#max-size-select
+                option(value='0') حداکثر
+                option(value='50') 50 مترمربع
+                option(value='60') 60 مترمربع
+                option(value='70') 70 مترمربع
+                option(value='80') 80 مترمربع
+                option(value='90') 90 مترمربع
+                option(value='100') 100 مترمربع
+                option(value='150') 150 مترمربع
+                option(value='200') 200 مترمربع
+                option(value='250') 250 مترمربع
+                option(value='300') 300 مترمربع
+                option(value='400') 400 مترمربع
+                option(value='500') 500 مترمربع
+                option(value='500') 600 مترمربع
+                option(value='500') 700 مترمربع
+                option(value='500') 800 مترمربع
+                option(value='500') 900 مترمربع
+                option(value='500') 1000 مترمربع
+            .sort-btns
+              button.btn.btn-success.btn-sm.fs-5.submit-modal-search(type='submit')
+                | جستجو
+              button.btn.btn-light.btn-sm.fs-5.reset-modal
+                | پاک کردن
+      .filter.filterhouse
+            button.filter-button(type='button' data-bs-toggle='modal' data-bs-target='#exampleModal')
+              | فیلتر
+  main.container-fluid
+    .container-fluid.row.row-cols-1.row-cols-md-2.card-buy-main
+      each sale in sales 
+        .col
+          .card
+            .card-horizontal
+              .img-square-wrapper
+                img(src=`img/sales/${sale.images[0]}` alt=`${sale.buildingType}`)
+              .card-body.card-buy-body
+                ul.card-buy-ul
+                  li.mb-1.fs-4
+                    svg.buy-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                      path(d='M321.94 98L158.82 237.78a24 24 0 000 36.44L321.94 414c15.57 13.34 39.62 2.28 39.62-18.22v-279.6c0-20.5-24.05-31.56-39.62-18.18z')
+                    +buildingTypeText(sale.buildingType)
+                  li.fs-5
+                    svg.buy-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                      path(d='M256 48c-79.5 0-144 61.39-144 137 0 87 96 224.87 131.25 272.49a15.77 15.77 0 0025.5 0C304 409.89 400 272.07 400 185c0-75.61-64.5-137-144-137z' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                      circle(cx='256' cy='192' r='48' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                    |                     آدرس:
+                    span.card-text-span= sale.address
+                  li.fs-5
+                    svg.buy-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                      path(fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M344 280l88-88M232 216l64 64M80 320l104-104')
+                      circle(cx='456' cy='168' r='24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                      circle(cx='320' cy='304' r='24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                      circle(cx='208' cy='192' r='24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                      circle(cx='56' cy='344' r='24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                    span.card-text-span= sale.size
+                    |                     مترمربع
+                  li.fs-5
+                    svg.buy-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                      path(d='M384 240H96V136a40.12 40.12 0 0140-40h240a40.12 40.12 0 0140 40v104zM48 416V304a64.19 64.19 0 0164-64h288a64.19 64.19 0 0164 64v112' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                      path(d='M48 416v-8a24.07 24.07 0 0124-24h368a24.07 24.07 0 0124 24v8M112 240v-16a32.09 32.09 0 0132-32h80a32.09 32.09 0 0132 32v16M256 240v-16a32.09 32.09 0 0132-32h80a32.09 32.09 0 0132 32v16' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                    span.card-text-span= sale.room
+                    |                     خواب
+                  li.fs-5
+                    svg.buy-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                      rect(x='48' y='96' width='416' height='320' rx='56' ry='56' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                      path(fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='60' d='M48 192h416M128 300h48v20h-48z')
+                    |                     قیمت:
+                    span.card-text-span
+                      - if (sale.price >= 1000)
+                        | #{(sale.price / 1000).toFixed(3)} میلیارد
+                      - else
+                        | #{sale.price} میلیون
+                a.btn.btn-success.view-card-link(href=`/for_sale/${sale.id}`) دیدن جزییات
+            .card-footer
+              small.text-muted= sale.createdAt
+  script(src='/js/rentbuy.js')
+  script(src='/js/search.js')

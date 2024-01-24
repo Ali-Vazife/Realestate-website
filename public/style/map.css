@@ -1,0 +1,39 @@
+.parent-map {
+  padding-bottom: 0.1rem;
+  box-shadow: rgba(50, 50, 93, 0.466) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.438) 0px 18px 36px -18px inset;
+}
+
+#map {
+  height: 90vh;
+  position: relative;
+  z-index: 1;
+}
+.search-select-btn {
+  top: 10;
+  right: 0;
+  left: 0;
+  position: absolute;
+  z-index: 88;
+}
+.search-select-btn button {
+  font-size: 1.4rem;
+  font-weight: 700;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+.footer {
+  margin-top: 0;
+}
+
+.house-link-map {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.house-info-map {
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 0 0.7rem;
+  display: block;
+  text-align: center;
+}

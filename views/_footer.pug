@@ -1,0 +1,45 @@
+footer.footer
+  .container
+    .footer-cta.pt-5.pb-5
+      .row
+        .col-6.col-xl-4.col-md-4.mb-30
+          .widget3
+            h5 لینک ها
+            ul
+              li
+                a(href='/')  صفحه اصلی 
+              li
+                a(href='/for_rent')  مشاهده آگهی های اجاره و رهن
+              li
+                a(href='/for_sale')  مشاهده آگهی های خرید
+              li
+                if user 
+                  a(href='/me') ورود به حساب
+                else
+                  a(href='/login') ورود به حساب
+        .col-6.col-xl-4.col-md-4.mb-30
+          .single-cta
+            i.fas.fa-map-marker-alt
+            .cta-text
+              h5.cantactus-footer آدرس دفتر:
+              span تست - خیابات تست - املاک تست
+            .single-cta
+              i.fas.fa-phone
+              .cta-text
+                h5.cantactus-footer ارتباط با ما:
+                span 1111 222 051
+                br
+                span 0000 000 0917
+                br
+                span 0000 000 0917
+        .col-xl-4.col-md-4.mb-30
+          .single-cta
+            .cta-text.cta-text-pic
+              img.google-map(src='/img/footer.svg' alt='about us!')
+              p.text-pic تسهیل و راحتی در انتخاب با ما...
+
+  .copyRightArea
+    .container
+      .row
+        .col-12.text-center
+          p © .Copyright All rights reserved 2023

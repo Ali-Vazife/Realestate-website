@@ -1,0 +1,163 @@
+extends base
+
+block append head
+  meta(name='robots', content='noindex,follow')
+
+mixin buildingTypeText(buildingType)
+  case buildingType
+    when 'apartment'
+      | نوع: آپارتمان
+    when 'edari'
+      | نوع: اداری
+    when 'tejari'
+      | نوع: تجاری
+    when 'villa'
+      | نوع: ویلا
+    when 'zeraei'
+      | نوع: زراعی
+    default
+      | نوع: غیره
+
+mixin navItem(link, text, active)
+  li(class=`${active ? 'side-nav--active' : ''}`)
+    a(href=`${link}`)
+      svg
+      | #{text}
+
+block content
+  link(rel='stylesheet' href='/style/unapprovedPage.css')
+  //- link(rel='stylesheet' href='/style/account.css')
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/me', 'تنظیمات')
+          li
+            a.nav__el.nav__el--logout خروج از حساب
+        - if (user.role === 'admin')
+          .admin-nav
+            h5.admin-nav__heading ادمین
+            ul.side-nav
+              +navItem('/me/new_house', 'اضافه کردن ملک جدید')
+              +navItem('/me/delete_update_house', 'حذف ملک از سایت')
+              +navItem('/admin/unapproved', 'تایید ملک کاربران', true)
+        - if (user.role === 'lead')
+          .admin-nav
+            h5.admin-nav__heading ثبت ملک
+            ul.side-nav
+              +navItem('/me/new_house', 'اضافه کردن ملک جدید')
+      .user-view__content
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md تنظیمات حساب شما
+          - if (unapprovedRents.length === 0 && unapprovedSales.length === 0)
+            .housefound.container-fluid
+              img(src='/img/notavailable.svg', alt='notavailable')
+              br
+              h1 آگهی های مورد نظر هنوز ثبت نشده است.
+          .container-fluid.row.row-cols-1.card-rent-main
+            .rent-unapproved
+              each rent in unapprovedRents 
+                .col
+                  .card
+                    .card-horizontal
+                      .img-square-wrapper
+                        img(src=`/img/rents/${rent.images[0]}` alt=`${rent.buildingType}`)
+                      .card-body.card-rent-body
+                        ul.card-rent-ul
+                          li.mb-1.fs-4
+                            svg.rent-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                              path(d='M321.94 98L158.82 237.78a24 24 0 000 36.44L321.94 414c15.57 13.34 39.62 2.28 39.62-18.22v-279.6c0-20.5-24.05-31.56-39.62-18.18z')
+                            span
+                              +buildingTypeText(rent.buildingType)
+                          li.fs-5
+                            svg.rent-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                              path(d='M256 48c-79.5 0-144 61.39-144 137 0 87 96 224.87 131.25 272.49a15.77 15.77 0 0025.5 0C304 409.89 400 272.07 400 185c0-75.61-64.5-137-144-137z' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                              circle(cx='256' cy='192' r='48' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                            span.card-text-span آدرس: #{rent.address}
+                          li.fs-5
+                            svg.rent-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                              path(fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M344 280l88-88M232 216l64 64M80 320l104-104')
+                              circle(cx='456' cy='168' r='24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                              circle(cx='320' cy='304' r='24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                              circle(cx='208' cy='192' r='24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                              circle(cx='56' cy='344' r='24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                            span.card-text-span #{rent.size} مترمربع
+                          li.fs-5
+                            svg.rent-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                              path(d='M384 240H96V136a40.12 40.12 0 0140-40h240a40.12 40.12 0 0140 40v104zM48 416V304a64.19 64.19 0 0164-64h288a64.19 64.19 0 0164 64v112' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                              path(d='M48 416v-8a24.07 24.07 0 0124-24h368a24.07 24.07 0 0124 24v8M112 240v-16a32.09 32.09 0 0132-32h80a32.09 32.09 0 0132 32v16M256 240v-16a32.09 32.09 0 0132-32h80a32.09 32.09 0 0132 32v16' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                            span.card-text-span #{rent.room} خواب
+                          li.fs-5
+                            svg.rent-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                              rect(x='48' y='96' width='416' height='320' rx='56' ry='56' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                              path(fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='60' d='M48 192h416M128 300h48v20h-48z')
+                            span.card-text-span اجاره:
+                              - if (rent.rentPrice >= 1000)
+                                | #{(rent.rentPrice / 1000).toFixed(3).replace(/\.0+$/,'')} میلیارد
+                              - else
+                                | #{rent.rentPrice} میلیون
+                          li.fs-5
+                            svg.rent-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                              rect(x='32' y='80' width='448' height='256' rx='16' ry='16' transform='rotate(180 256 208)' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32')
+                              path(fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M64 384h384M96 432h320')
+                              circle(cx='256' cy='208' r='80' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                              path(d='M480 160a80 80 0 01-80-80M32 160a80 80 0 0080-80M480 256a80 80 0 00-80 80M32 256a80 80 0 0180 80' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                            span.card-text-span رهن:
+                              - if (rent.mortgagePrice >= 1000)
+                                | #{(rent.mortgagePrice / 1000).toFixed(3).replace(/\.0+$/,'')} میلیارد
+                              - else
+                                | #{rent.mortgagePrice} میلیون
+                        a.btn.btn-success.view-card-link(href=`/for_rent/${rent.id}`) دیدن جزییات
+                        .rent-card
+                        div.app-rej-container(id=`approve-reject-form-${rent.houseCode}`)
+                          input(type="hidden", name="houseCode", value=rent.houseCode)
+                          button(type="button", class="approve-button", data-house-code=rent.houseCode) تایید ملک
+                          button(type="button", class="reject-button", data-house-code=rent.houseCode) حذف از لیست
+            .sale-unapproved
+              each sale in unapprovedSales
+                .col
+                  .card
+                    .card-horizontal
+                      .img-square-wrapper
+                        img(src=`/img/sales/${sale.images[0]}` alt=`${sale.buildingType}`)
+                      .card-body.card-buy-body
+                        ul.card-buy-ul
+                          li.mb-1.fs-4
+                            svg.buy-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                              path(d='M321.94 98L158.82 237.78a24 24 0 000 36.44L321.94 414c15.57 13.34 39.62 2.28 39.62-18.22v-279.6c0-20.5-24.05-31.56-39.62-18.18z')
+                            span
+                              +buildingTypeText(sale.buildingType)
+                          li.fs-5
+                            svg.buy-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                              path(d='M256 48c-79.5 0-144 61.39-144 137 0 87 96 224.87 131.25 272.49a15.77 15.77 0 0025.5 0C304 409.89 400 272.07 400 185c0-75.61-64.5-137-144-137z' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                              circle(cx='256' cy='192' r='48' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                            span.card-text-span آدرس: #{sale.address}
+                          li.fs-5
+                            svg.buy-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                              path(fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32' d='M344 280l88-88M232 216l64 64M80 320l104-104')
+                              circle(cx='456' cy='168' r='24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                              circle(cx='320' cy='304' r='24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                              circle(cx='208' cy='192' r='24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                              circle(cx='56' cy='344' r='24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                            span.card-text-span #{sale.size} مترمربع
+                          li.fs-5
+                            svg.buy-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                              path(d='M384 240H96V136a40.12 40.12 0 0140-40h240a40.12 40.12 0 0140 40v104zM48 416V304a64.19 64.19 0 0164-64h288a64.19 64.19 0 0164 64v112' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                              path(d='M48 416v-8a24.07 24.07 0 0124-24h368a24.07 24.07 0 0124 24v8M112 240v-16a32.09 32.09 0 0132-32h80a32.09 32.09 0 0132 32v16M256 240v-16a32.09 32.09 0 0132-32h80a32.09 32.09 0 0132 32v16' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                            span.card-text-span #{sale.room} خواب
+                          li.fs-5
+                            svg.buy-card-svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512')
+                              rect(x='48' y='96' width='416' height='320' rx='56' ry='56' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='32')
+                              path(fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='60' d='M48 192h416M128 300h48v20h-48z')
+                            span.card-text-span قیمت:
+                              - if (sale.price >= 1000)
+                                | #{(sale.price / 1000).toFixed(3).replace(/\.0+$/,'')} میلیارد
+                              - else
+                                | #{sale.price} میلیون
+                        a.btn.btn-success.view-card-link(href=`/for_sale/${sale.id}`) دیدن جزییات
+                        div.app-rej-container(id=`approve-reject-form-${sale.houseCode}`)
+                          input(type="hidden", name="houseCode", value=sale.houseCode)
+                          button(type="button", class="approve-sale-button", data-house-code=sale.houseCode) تایید ملک
+                          button(type="button", class="reject-sale-button", data-house-code=sale.houseCode) حذف از لیست
+            .second-houseinfo
+  script(src='/js/rejectApprove.js')

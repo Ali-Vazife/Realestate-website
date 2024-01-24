@@ -1,0 +1,257 @@
+extends base
+block append head
+  meta(name='robots', content='noindex,follow')
+
+mixin navItem(link, text, active)
+  li(class=`${active ? 'side-nav--active' : ''}`)
+    a(href=`${link}`)
+      svg
+      | #{text}
+
+block content
+  link(rel='stylesheet' href='/style/account.css')
+  link(rel='stylesheet' href='/style/newHouse.css')
+  script(src='https://unpkg.com/leaflet/dist/leaflet.js')
+  link(rel='stylesheet', href='https://unpkg.com/leaflet/dist/leaflet.css')
+
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/me', 'تنظیمات')
+          li
+            a.nav__el.nav__el--logout خروج از حساب
+
+
+        - if (user.role === 'admin')
+          .admin-nav
+            h5.admin-nav__heading ادمین
+            ul.side-nav
+              +navItem('/me/new_house', 'اضافه کردن ملک جدید', true)
+              +navItem('/me/delete_update_house', 'حذف ملک از سایت')
+              +navItem('/admin/unapproved', 'تایید ملک کاربران')
+              
+        - if (user.role === 'lead')
+          .admin-nav
+            h5.admin-nav__heading ثبت ملک
+            ul.side-nav
+              +navItem('/me/new_house', 'اضافه کردن ملک جدید', true)
+      .user-view__content
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md اضافه کردن آگهی برای فروش
+          - if (user.role === 'lead')
+            h5.heading-secondary.ma-bt-md آگهی های ثبت شده توسط کاربران پس از تایید درون سایت قرار می گیرد.
+          .new-sale-container
+            form(id="addSaleHouseForm")
+              .form__group
+                label.label-pair(for="saleCity") شهر:
+                select.select-pair#saleCity(name="city" required)
+                  option(value="Shiraz") Shiraz
+              .form__group
+                label.label-pair(for="saleBuildingType") نوع ملک:
+                select.select-pair#saleBuildingType(name="buildingType" required)
+                  option(value="apartment") آپارتمان مسکونی
+                  option(value="edari") دفتر کار اداری
+                  option(value="tejari") مغازه و تجاری
+                  option(value="villa") خانه و ویلا
+                  option(value="zeraei") زراعی
+                  option(value="other") غیره
+                br
+                span.helper-text نوع ملک رو انتخاب کنید.
+
+              .form__group
+                label.label-pair(for="salePrice") قیمت:
+                input.input-pair#salePrice(name="price" type="number" min="0" required)
+                br
+                span.helper-text قیمت را فقط به عدد وارد کنید. مثلا برای 100 میلیون، عدد 100 را وارد کنید و برای یک میلیارد عدد 1000.
+
+              .form__group
+                label.label-pair(for="saleSize") متراژ:
+                input.input-pair#saleSize(name="size" type="number" min="0")
+                br
+                span.helper-text فقط عدد وارد کنید. مثلا برای 200 مترمربع ، عدد 200 را وارد کنید.
+              .form__group
+                label.label-pair(for="saleRoom") تعداد اتاق‌ها:
+                input.input-pair#saleRoom(name="room" type="number" min="0")
+                span.helper-text تعداد اتاق را به عدد وارد کنید.
+              .form__group
+                label.label-pair(for="saleAddress") آدرس:
+                input.input-pair#saleAddress(name="address" type="text" required)
+                span.helper-text آدرس محل مورد نظر را بنویسید.
+              .form__group
+                input.input-pair#saleAddressLng(name="longitude" type="hidden" required)
+              .form__group
+                input.input-pair#saleAddressLat(name="latitude" type="hidden" required)
+              .form__group
+                label.label-pair(for="saleLoc") مختصات روی نقشه:
+                #saleMap(style='height: 300px;')
+                span.helper-text مختصات محل مورد نظر را روی نقشه:
+                br
+              .form__group
+                label.label-pair(for="phoneNumber") شماره صاحب  ملک را وارد کنید:
+                input.input-pair#salePhone(type="tel" name="phoneNumber" required)
+                span.helper-text شماره صاحب ملک را بنویسید.
+              .form__group
+                label.label-pair(for="saleElevator") آسانسور:
+                input.input-pair#saleElevator(name="elevator" type="checkbox")
+                span.helper-text اگر محل مورد نظر اسانسور دارد تیک رو بزنید.
+              .form__group
+                label.label-pair(for="saleParking") پارکینگ:
+                input.input-pair#saleParking(name="parking" type="checkbox")
+                span.helper-text اگر محل مورد نظر پارکینگ دارد تیک رو بزنید.
+              .form__group
+                label.label-pair(for="saleBuildingStatus") تخلیه شده:
+                input.input-pair#saleBuildingStatus(name="buildingStatus" type="checkbox")
+                span.helper-text اگر محل مورد نظر تخلیه شده تیک رو بزنید.
+              .form__group
+                label.label-pair(for="saleStoreroom") انباری:
+                input.input-pair#saleStoreroom(name="storeroom" type="checkbox")
+                span.helper-text اگر محل مورد نظر انباری دارد تیک رو بزنید.
+              .form__group
+                label.label-pair(for="saleFloor") طبقه:
+                input.input-pair#saleFloor(name="floor" type="number" min="0" required)
+                span.helper-text طبقه رو مشخص کنید.
+              .form__group
+                label.label-pair(for="saleAge") سن ساختمان:
+                input.input-pair#saleAge(name="age" type="number" min="0")
+                span.helper-text سن ساختمان رو به عدد مشخص کنید.
+              .form__group
+                label.label-pair(for="saleDescription") توضیحات:
+                textarea.input-pair.description-text-area#saleDescription(name="description" rows="4" maxlength="270")
+                span.helper-text اگر توضیحات اضافه و بیشتری دارید میتونید در اینجا بنویسید.
+              .form__group
+                label.label-pair(for="saleImages") تصاویر:
+                input.input-pair#saleImages(name="images" type="file" multiple)
+                br
+                span.helper-text تصاویر ملک را وارد کنید. دقت کنید تصاویر بیشتر از 6 عدد نباید باشد!
+              .form__group.right
+                button.btn.btn--small.btn--green.btn--save-password(type="submit") افزودن ملک
+                br
+                span.helper-text  برای ثبت ملک روی این گزینه یکبار کلیک کرده و صبر کنید تا وقتی نوار سبزرنگ تایید نمایش داده شد.
+
+        .line &nbsp;
+
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md اضافه کردن آگهی برای رهن و اجاره
+          .new-buy-container
+            form(id="addRentHouseForm")
+              .form__group
+                label.label-pair(for="rentCity") شهر:
+                select.select-pair#rentCity(name="city" required)
+                  option(value="Shiraz") Shiraz
+              .form__group
+                label.label-pair(for="rentBuildingType") نوع ملک:
+                select.select-pair#rentBuildingType(name="buildingType" required)
+                  option(value="apartment") آپارتمان مسکونی
+                  option(value="edari") دفتر کار اداری
+                  option(value="tejari") مغازه و تجاری
+                  option(value="villa") خانه و ویلا
+                  option(value="zeraei") زراعی
+                  option(value="other") غیره
+                br
+                span.helper-text نوع ملک رو انتخاب کنید.
+
+              .form__group
+                label.label-pair(for="rentMortgagePrice") رهن:
+                input.input-pair#rentMortgagePrice(name="mortgagePrice" type="number" min="0" required)
+                br
+                span.helper-text قیمت را فقط به عدد وارد کنید. مثلا برای 100 میلیون، عدد 100 را وارد کنید و برای یک میلیارد و پونصد عدد 1500.
+              .form__group
+                label.label-pair(for="fullbid") رهن کامل:
+                input.input-pair#fullbid(name="fullBid" type="checkbox")
+                span.helper-text برای رهن کامل تیک این قسمت رو بزنید.
+
+              .form__group
+                label.label-pair(for="rentRentPrice") اجاره:
+                input.input-pair#rentRentPrice(name="rentPrice" type="number" min="0" required)
+                br
+                span.helper-text رهن را فقط به عدد وارد کنید. مثلا برای 100 میلیون، عدد 100 را وارد کنید.
+                
+              .form__group
+                label.label-pair(for="rentSize") متراژ:
+                input.input-pair#rentSize(name="size" type="number" min="0")
+                br
+                span.helper-text فقط عدد وارد کنید. مثلا برای 200 مترمربع ، عدد 200 را وارد کنید.
+
+              .form__group
+                label.label-pair(for="rentRoom") تعداد اتاق‌ها:
+                input.input-pair#rentRoom(name="room" type="number" min="0")
+                br
+                span.helper-text تعداد اتاق را به عدد وارد کنید.
+
+              .form__group
+                label.label-pair(for="rentAddress") آدرس:
+                input.input-pair#rentAddress(name="address" type="text" required)
+                br
+                span.helper-text آدرس محل مورد نظر را بنویسید.
+              .form__group
+                input.input-pair#rentAddressLng(name="longitude" type="hidden" required)
+                input.input-pair#rentAddressLat(name="latitude" type="hidden" required)
+              .form__group
+                label.label-pair(for="rentLoc") مختصات روی نقشه:
+                #rentMap(style='height: 300px;')
+                span.helper-text مختصات محل مورد نظر را روی نقشه:
+                br              
+              .form__group
+                label.label-pair(for="phone") شماره صاحب  ملک را وارد کنید:
+                input.input-pair#rentPhone(type="tel" name="phone" required)
+                br
+                span.helper-text شماره صاحب ملک را بنویسید.
+              .form__group
+                label.label-pair(for="rentElevator") آسانسور:
+                input.input-pair#rentElevator(name="elevator" type="checkbox")
+                span.helper-text اگر محل مورد نظر اسانسور دارد تیک رو بزنید.
+
+              .form__group
+                label.label-pair(for="rentParking") پارکینگ:
+                input.input-pair#rentParking(name="parking" type="checkbox")
+                span.helper-text اگر محل مورد نظر پارکینگ دارد تیک رو بزنید.
+
+              .form__group
+                label.label-pair(for="rentBuildingStatus") تخلیه شده:
+                input.input-pair#rentBuildingStatus(name="buildingStatus" type="checkbox")
+                span.helper-text اگر محل مورد نظر تخلیه شده تیک رو بزنید.
+
+              .form__group
+                label.label-pair(for="rentStoreroom") انباری:
+                input.input-pair#rentStoreroom(name="storeroom" type="checkbox")
+                span.helper-text اگر محل مورد نظر انباری دارد تیک رو بزنید.
+
+              .form__group
+                label.label-pair(for="rentFloor") طبقه:
+                input.input-pair#rentFloor(name="floor" type="number" min="0" required)
+                br
+                span.helper-text طبقه رو مشخص کنید.
+
+              .form__group
+                label.label-pair(for="rentAge") سن ساختمان:
+                input.input-pair#rentAge(name="age" type="number" min="0")
+                br
+                span.helper-text سن ساختمان رو به عدد مشخص کنید.
+
+              .form__group
+                label.label-pair(for="rentDescription") توضیحات:
+                textarea.input-pair.description-text-area#rentDescription(name="description" rows="4" maxlength="270")
+                br
+                span.helper-text اگر توضیحات اضافه و بیشتری دارید میتونید در اینجا بنویسید.
+
+              .form__group
+                label.label-pair(for="rentImages") تصاویر:
+                input.input-pair#rentImages(name="images" type="file" multiple)
+                br
+                span.helper-text تصاویر ملک را وارد کنید. دقت کنید تصاویر بیشتر از 6 عدد نباید باشد!
+
+              .form__group.right
+                button.btn.btn--small.btn--green.btn--save-password(type="submit") افزودن ملک
+                br
+                span.helper-text  برای ثبت ملک روی این گزینه یکبار کلیک کرده و صبر کنید تا وقتی نوار سبزرنگ تایید نمایش داده شد.
+
+  script(src='/js/addHouse.js')
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set up the map for sale house
+      setupMap('saleMap', 'saleAddress');
+
+      // Set up the map for rent house
+      setupMap('rentMap', 'rentAddress');
+    });

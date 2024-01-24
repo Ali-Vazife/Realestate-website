@@ -1,0 +1,50 @@
+extends base
+block append head
+  meta(name='robots', content='noindex,follow')
+
+mixin navItem(link, text, active)
+  li(class=`${active ? 'side-nav--active' : ''}`)
+    a(href=`${link}`)
+      svg
+      | #{text}
+
+block content
+  link(rel='stylesheet' href='/style/account.css')
+  main.main
+    .user-view
+      nav.user-view__menu
+        ul.side-nav
+          +navItem('/me', 'تنظیمات')
+          li
+            a.nav__el.nav__el--logout خروج از حساب
+
+        - if (user.role === 'admin')
+          .admin-nav
+            h5.admin-nav__heading ادمین
+            ul.side-nav
+              +navItem('/me/new_house', 'اضافه کردن ملک جدید')
+              +navItem('/me/delete_update_house', 'حذف ملک از سایت')
+              +navItem('/admin/unapproved', 'تایید ملک کاربران')
+        - if (user.role === 'lead')
+          .admin-nav
+            h5.admin-nav__heading ثبت ملک
+            ul.side-nav
+              +navItem('/me/new_house', 'اضافه کردن ملک جدید')
+      .user-view__content
+        .user-view__form-container
+          h2.heading-secondary.ma-bt-md حذف ملک
+          form(id="deleteHouseForm")
+            .form__group.form-delete-house
+              label(for="houseType" class="custom-label") نوع ملک:
+              br
+              label(for="rent" class="custom-label circle-label") اجاره
+              input#rent(type="radio" name="houseType" value="rent" required class="custom-input")
+              label(for="sale" class="custom-label circle-label") فروش
+              input#sale(type="radio" name="houseType" value="sale" required class="custom-input")
+            .form__group.form-delete-house
+              label(for="houseCode" class="custom-label") آیدی ملک رو وارد کنید:
+              input#houseCode(name="houseCode" type="text" required class="custom-input")
+            button.btn.btn--small.btn--red(type="submit") حذف ملک
+
+  script(src='/js/deleteUpdate.js')
+

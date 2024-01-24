@@ -1,0 +1,308 @@
+body {
+  background-color: #e4e4e4;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.gallery {
+  position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 0.5rem;
+  margin-top: -5rem;
+  color: rgb(27, 29, 29);
+  background-color: #e5e6e69f;
+  font-weight: bold;
+  font-size: 2rem;
+  border-radius: 2rem;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.prev {
+  left: 9%;
+  border-radius: 3px 0 0 3px;
+}
+.next {
+  right: 1%;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #4b4343;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  margin-top: 1rem;
+  width: 15%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.7;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+/*  */
+.description-main {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  /* background-color: #e4e4e4; */
+}
+
+.discription-container {
+  background-color: #fcf9f9;
+  /* background-color: #f1f0f0; */
+  border-radius: 0 0 1rem 1rem;
+
+  /* margin: 3rem 0; */
+  padding: 3rem;
+  border: 1px solid #d6dad9;
+}
+.text-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.gallery .full-img img {
+  width: 100%;
+}
+.gallery img {
+  border-radius: 20px;
+}
+.full-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+}
+.full-img {
+  max-width: 92%;
+  min-height: 20rem;
+  max-height: 28rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 1rem;
+  background-color: #f5f2f2;
+}
+
+.thumbnail-img img {
+  border-radius: 0.2rem;
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  background-color: #8d8d8d;
+}
+.thumbnail-img .column {
+  /* width: 20rem; */
+  min-height: 2rem;
+  max-height: 4rem;
+  background-color: #e6e7e7;
+}
+
+.house-info-title {
+  padding-bottom: 4px;
+  font-size: 1.6rem;
+}
+.house-desc-title {
+  padding-bottom: 4px;
+  border-bottom: 2px solid #d6dad9;
+}
+
+.house-info-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.house-code {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.phonesvg {
+  transform: scaleX(-1);
+  width: 2.2rem;
+  height: 2.2rem;
+}
+.house-title-svg {
+  width: 2rem;
+  height: 2rem;
+  color: #528107;
+}
+.more-infor-text {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.tell-info-container {
+  background-color: #44c26e;
+  color: #fff;
+  border-radius: 1rem;
+  padding: 0.2rem 0;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.tell-info-title {
+  margin: 0;
+}
+
+.info-list-container ul {
+  /* margin-top: 1rem; */
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* gap: 0 0.5rem; */
+  border: 1px solid #d6d6d6;
+  padding: 1rem 0;
+}
+.info-list-container li {
+  /* margin-top: 1rem; */
+  flex-wrap: wrap;
+  padding: 0 1.1rem;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+.info-list-div p {
+  margin: 0;
+}
+.info-list-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.first-li-text {
+  font-weight: 400;
+}
+.first-li {
+  border-left: 1px solid #d6d6d6;
+}
+.list-li {
+  border-left: 1px solid #d6d6d6;
+}
+.info-address {
+  font-weight: 400;
+}
+.info-author {
+  font-size: 1.2rem;
+}
+.nav__author-img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  margin: 0 0.7rem;
+}
+
+.tell-number-btn {
+  margin: 0 auto;
+  display: flex;
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-radius: 5px;
+  background-color: #44c26e;
+  border: none;
+}
+.tell-number-p {
+  margin: 0 auto;
+  padding: 0.5rem 0;
+  color: #ebeaea;
+}
+.tell-number-p a:link {
+  color: #ebeaea;
+}
+/* map */
+/* .map-section { */
+/* background-color: #e4e4e4; */
+/* } */
+.map-container {
+  /* background-color: #f1f0f0;*/
+  background-color: #f1f0f0;
+  display: flex;
+  justify-content: center;
+  border-radius: 1rem;
+  padding: 3rem;
+  border: 1px solid #d6dad9;
+}
+.map iframe {
+  border-radius: 1rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.text-map {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.footer {
+  margin-top: 1rem;
+}
+
+.logout-large-screen {
+  display: none;
+}
+.secondhouseinfo {
+  display: none;
+}
+@media screen and (max-width: 29.9em) {
+  .text-info-container {
+    margin: 4rem 0 2rem 0;
+  }
+  .text-description-container {
+    margin-top: 2rem;
+  }
+  .info-author {
+    margin-top: 2rem;
+  }
+  .tell-info-container {
+    margin-top: 4rem;
+  }
+  .secondhouseinfo {
+    display: block;
+    background-color: #fff;
+    height: 23vh;
+  }
+}

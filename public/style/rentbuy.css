@@ -1,0 +1,163 @@
+/* top search filter header */
+.top-filter-div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #9cdfda;
+  border-radius: 0.2px;
+  gap: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 5px 1rem 0.5rem 0.2rem;
+}
+
+.submit-modal-search,
+.reset-modal {
+  border-radius: 4px;
+}
+
+.full-rahn-div {
+  display: flex;
+  align-self: center;
+  gap: 5px;
+}
+/* available  */
+.housefound {
+  margin-top: 2rem;
+  text-align: center;
+}
+.housefound img {
+  width: 50%;
+  height: auto;
+}
+.housefound h1 {
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+/* sort header */
+.sort-header-div {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.sort-header-div ul {
+  margin-right: 1rem;
+}
+.sort-header-div ul li {
+  cursor: pointer;
+  margin-left: 2rem;
+}
+.sort-btns {
+  display: flex;
+  gap: 0.5rem;
+}
+/*  */
+
+/* card style */
+.card {
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.103);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.103);
+}
+.card-rent-main,
+.card-buy-main {
+  gap: 2rem 0;
+}
+
+.card-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.img-square-wrapper img {
+  /* width: 20rem;
+  min-height: 18rem;
+  max-height: 18rem; */
+  width: 100%;
+  height: 100%;
+  border-radius: 1px;
+  object-fit: scale-down;
+  /* margin: 0 auto; */
+}
+.img-square-wrapper {
+  background-color: #f5f4f4;
+  width: 20rem;
+  min-height: 18rem;
+  max-height: 18rem;
+  /* margin: 0 auto; */
+}
+.card-rent-ul,
+.card-buy-ul {
+  list-style-type: none;
+}
+.card-rent-ul li {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.card-buy-ul li {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.card-rent-body,
+.card-buy-body {
+  display: flex;
+  flex-direction: column;
+}
+.view-card-link {
+  margin-top: auto;
+  width: 25%;
+  align-self: flex-end;
+}
+.rent-card-svg,
+.buy-card-svg {
+  width: 20px;
+  height: 18px;
+  fill: #28b487;
+  color: #28b487;
+}
+
+.btn:hover {
+  -webkit-transform: translateY(-3px);
+  transform: translateY(-3px);
+  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  -webkit-transform: translateY(-1px);
+  transform: translateY(-1px);
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.btn:focus {
+  outline: none;
+  background-color: #2e864b;
+}
+
+.view-card-link,
+.submit-modal-search {
+  background-color: #55c57a;
+  color: #fff;
+  border: none;
+}
+.view-card-link::after,
+.submit-modal-search::after {
+  background-color: #55c57a;
+  color: #fff;
+}
+
+.second-houseinfo {
+  display: none;
+}
+@media screen and (max-width: 29.9em) {
+  .second-houseinfo {
+    display: block;
+    background-color: #fff;
+    height: 45vh;
+  }
+}

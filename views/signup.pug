@@ -1,0 +1,28 @@
+extends base
+block append head
+  meta(name='robots', content='noindex,follow')
+
+block content
+  link(rel='stylesheet' href='/style/login.css')
+
+  main.main
+    .login-form
+      h2.heading-secondary.ma-bt-lg اطلاعات زیر را وارد کنید
+      p.p-secondary شماره خود را با دقت وارد کنید چون در مراحل بعدی برای احراز هویت به این شماره پیامک ارسال خواهد شد.
+      form#signup.form.form--signup
+        .form__group
+          label.form__label(for='phoneNumber') شماره تلفن
+          input#phoneNumber.form__input(type='tel', placeholder='09123456789', required)
+        .form__group.ma-bt-md
+          label.form__label(for='name') نام
+          input#name.form__input(type='text', placeholder='نام', required)
+        .form__group.ma-bt-md
+          label.form__label(for='password') رمز
+          input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+        .form__group.ma-bt-md
+          label.form__label(for='passwordConfirm') تکرار رمز
+          input#passwordConfirm.form__input(type='password', placeholder='••••••••', required, minlength='8')
+        .form__group
+          button#submitStep1.btn.btn--green تایید
+    .second-login
+  script(src='js/signup.js')

@@ -1,0 +1,22 @@
+extends base
+block append head
+  meta(name='robots', content='noindex,follow')
+
+block content
+  link(rel='stylesheet' href='/style/login.css')
+
+  main.main
+    .login-form
+      h2.heading-secondary.ma-bt-lg ورود به اکانت شما
+      form.form.form--login
+        .form__group
+          label.form__label(for='phoneNumber') شماره تلفن
+          input#phoneNumber.form__input(type='tel', placeholder='09123456789', required)
+        .form__group.ma-bt-md
+          label.form__label(for='password') رمز ورود
+          input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+        .form__group
+          button.btn.btn--green ورود
+
+    .second-login
+  script(src='js/index.js')

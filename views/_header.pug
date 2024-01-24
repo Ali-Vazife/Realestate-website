@@ -1,0 +1,36 @@
+link(rel='stylesheet' href='/style/account.css')
+header.header
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    .container-fluid.navbar-main-container
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      .navbar-brand
+        img.logosvg(src='/img/logo.svg' alt='KAPAR')
+        .brand-text
+          a.fa-brand(href='/') املاک کَپَر
+          a.en-brand(href='/') KAPAR REALSTATE
+      #navbarSupportedContent.collapse.navbar-collapse.flex-grow-0
+        ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          li.nav-item.nav-li
+            a.nav-link.active.main-page.center-navmenu(aria-current='page' href='/') صفحه اصلی
+          li.nav-item.nav-li
+            a.nav-link.center-navmenu(href='/for_rent') رهن و اجاره ملک
+          li.nav-item.nav-li
+            a.nav-link.center-navmenu(href='/for_sale') خرید ملک
+          li.nav-item.nav-li
+            a.nav-link.center-navmenu(href='/map/Shiraz') جستجو روی نقشه
+          li.nav-item.nav-li
+            a(href='/contact').nav-link.center-navmenu.contact-us__element ارتباط با ما
+        ul.navbar-nav.me-auto.mb-2.mb-lg-0.logout-large-screen
+      #navbarSupportedContent2.flex-grow-0
+        ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          .logout-small-screen
+          if user
+            a.nav__el(href='/me')
+              img.nav__user-img(src=`/img/users/${user.photo}` alt=`Photo of ${user.name}`)
+              span= user.name.split(' ')[0]
+          else
+            li.nav-item.login
+              a.nav-link(href='/login') ورود
+            li.nav-item.signup
+              a.nav-link(href='/signup') ثبت نام

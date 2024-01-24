@@ -1,0 +1,138 @@
+extends base
+mixin buildingTypeText(buildingType)
+  case buildingType
+    when 'apartment'
+      | نوع: آپارتمان
+    when 'edari'
+      | نوع: اداری
+    when 'tejari'
+      | نوع: تجاری
+    when 'villa'
+      | نوع: ویلا
+    when 'zeraei'
+      | نوع: زراعی
+    default
+      | نوع: غیره
+
+block content 
+
+  //- link(rel='stylesheet' href='/style/style.css')
+  link(rel='stylesheet' href='/style/houseinfo.css')
+
+  main.description-main
+    .container.row.row-cols-1.row-cols-md-2.discription-container
+      .col.gallery
+        each image, index in rent.images
+          .mySlides.full-img
+            .numbertext #{index + 1} / #{rent.images.length}
+            img(src=`/img/rents/${image}`)
+        a.next ❮
+        a.prev ❯
+        .row.thumbnail-img
+          each image, index in rent.images
+            .column
+              img.demo.cursor(src=`/img/rents/${image}`, alt=`Image ${index + 1}`)
+      .col.position-sticky.text-info-container
+        div
+          div.house-info-title
+            h3   
+              span
+                svg.house-title-svg(xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor')
+                  path(stroke-linecap='round' stroke-linejoin='round' d='M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z')
+                  path(stroke-linecap='round' stroke-linejoin='round' d='M6 6h.008v.008H6V6z')
+              +buildingTypeText(rent.buildingType)
+            p.house-code آیدی ملک: #{rent.houseCode} 
+          .info-list-container
+            ul
+              li.first-li
+                .info-list-div
+                  p.first-li-text متراژ:
+                  p.second-li-text #{rent.size} مترمربع
+              li.list-li
+                .info-list-div
+                  p.first-li-text تعداد اتاق:
+                  p.second-li-text #{rent.room}
+              li.list-li
+                .info-list-div
+                  p.first-li-text وضعیت:
+                  p.second-li-text
+                    - if (rent.buildingStatus === true)
+                        | تخلیه شده
+                    - else 
+                        | تخلیه نشده
+              li.list-li
+                .info-list-div
+                  p.first-li-text رهن:
+                  p.second-li-text.second-li-price
+                   - if (rent.rentPrice >= 1000)
+                    | #{(rent.rentPrice / 1000).toFixed(3).replace(/\.0+$/,'')} میلیارد
+                   - else
+                    | #{rent.rentPrice} میلیون
+              li.last-li
+                .info-list-div
+                  p.first-li-text اجاره:
+                  p.second-li-text.second-li-price
+                   - if (rent.mortgagePrice >= 1000)
+                    | #{(rent.mortgagePrice / 1000).toFixed(3).replace(/\.0+$/,'')} میلیارد
+                   - else
+                    | #{rent.mortgagePrice} میلیون
+            ul
+              li.first-li
+                .info-list-div
+                  p.first-li-text سن بنا:
+                  p.second-li-text #{rent.age} سال
+              li.list-li
+                .info-list-div
+                  p.first-li-text پارکینگ:
+                  p.second-li-text
+                    - if (rent.parking === true)
+                      | دارد
+                    - else 
+                      | خیر
+              li.list-li
+                .info-list-div
+                  p.first-li-text طبقه:
+                  p.second-li-text #{rent.floor}
+              li.list-li
+                .info-list-div
+                  p.first-li-text آسانسور:
+                  p.second-li-text
+                    - if (rent.elevator === true)
+                      | دارد
+                    - else 
+                      | خیر
+              li.list-li
+                .info-list-div
+                  p.first-li-text رهن کامل:
+                  p.second-li-text
+                    - if (rent.fullBid === true)
+                      | داده میشود
+                    - else 
+                      | خیر
+              li.last-li
+                .info-list-div
+                  p.first-li-text انباری:
+                  p.second-li-text 
+                    - if (rent.storeroom === true)
+                      | دارد
+                    - else 
+                      | خیر
+            p.info-address
+                | آدرس: #{rent.address}
+        .text-description-container
+          h4.house-desc-title توضیحات بیشتر:
+          p.more-infor-text #{rent.description}
+          if user
+            - if (user.role === 'admin')
+              p.more-infor-text شماره صاحب ملک: #{rent.phoneNumber}
+          p.info-author آگهی توسط:
+            img.nav__author-img(src=`/img/users/${rent.author[0].photo}` alt=`Photo of ${rent.author[0].name}`)
+            span #{rent.author[0].name}
+        .tell-info-container
+          button.tell-number-btn
+            p.tell-number-p
+              img.phonesvg(src="/img/phone.svg", alt="")
+              a(href='tel:+989000000000')  اطلاعات تماس:  
+                span 0000 0000 071 - 0000 000 093
+      .secondhouseinfo
+  script(src='/js/houseinfo.js')

@@ -1,0 +1,48 @@
+/* Style labels for pairs */
+.label-pair {
+  display: inline-block;
+  width: 10%; /* Adjust the width as needed */
+  font-weight: bold;
+  margin-right: 5px; /* Add some spacing between label and select */
+  color: #333;
+}
+
+/* Style select elements for pairs */
+.select-pair {
+  width: 50%; /* Adjust the width as needed */
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 1.4rem;
+}
+
+/* Style option elements */
+.select-pair option {
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.description-text-area {
+  width: 100%;
+}
+
+/* Style all input elements */
+.input-pair {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 1.6rem;
+}
+
+.helper-text {
+  font-size: 1rem; /* Adjust the font size as needed */
+  color: #888; /* Adjust the text color as needed */
+  margin-right: 5px; /* Add some space between the form field and helper text */
+}
+.helper-text-bold {
+  font-size: 1rem; /* Adjust the font size as needed */
+  font-weight: 600;
+  color: #888; /* Adjust the text color as needed */
+  margin-right: 5px; /* Add some space between the form field and helper text */
+}
