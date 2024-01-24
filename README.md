@@ -36,7 +36,7 @@ Check out our project in action! Watch the demo GIF:
    - Clone the repository to your local machine.
    - Install dependencies using `npm install`.
    - Create a `config.env` file based on the provided `exampleconfig.env` file. Update the configuration parameters such as MongoDB connection details and other environment variables.
-   - 
+     
 2. **Configuration:**
    - Set up your MongoDB connection.
    - Configure environment variables, ensuring security measures are in place.
