@@ -59,7 +59,8 @@ Welcome to the RealEstate Website, your go-to platform for exploring captivating
 ├── config.env
 ├── package-lock.json
 ├── package.json
-└── server.js```
+└── server.js
+```
 
 ## Project Demo
 
