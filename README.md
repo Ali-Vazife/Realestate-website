@@ -25,6 +25,41 @@ Welcome to the RealEstate Website, your go-to platform for exploring captivating
 - **Map Integration:**
   - Users can explore all listed properties on a map, providing a visual representation with geographical coordinates.
 
+## Folder structure
+
+├── controllers/
+│   ├── authController.js
+│   ├── errorController.js
+│   ├── handlerFactory.js
+│   ├── rentController.js
+│   ├── saleController.js
+│   ├── userController.js
+│   └── viewsController.js
+├── models/
+│   ├── rentModel.js
+│   ├── saleModel.js
+│   └── userModel.js
+├── public/
+│   ├── img...
+│   ├── js...
+│   └── style...
+├── routes/
+│   ├── rentRoutes.js
+│   ├── saleRoutes.js
+│   ├── userRoutes.js
+│   └── viewRoutes.js
+├── utils/
+│   ├── apiFeatures.js
+│   ├── appError.js
+│   └── catchAsync.js
+├── views/
+│   └── pug files...
+├── app.js
+├── config.env
+├── package-lock.json
+├── package.json
+└── server.js
+
 ## Project Demo
 
 Check out our project in action! Watch the demo GIF: 
