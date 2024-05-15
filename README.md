@@ -1,8 +1,8 @@
 # RealEstate Website
 
-Welcome to the RealEstate Website, your go-to platform for exploring captivating house listings. Our project, built on a robust MVC architecture, utilizes Node.js, Express, MongoDB, and Mongoose for the backend, with Pug as the template engine. We prioritize best practices in code structure, modularization, and adhere to the DRY principle.
+Welcome to the RealEstate Website. Our project, built on a robust MVC architecture, utilizes Node.js, Express, MongoDB, and Mongoose for the backend, with Pug as the template engine. We prioritize best practices in code structure, modularization, and adhere to the DRY principle.
 
-## Features
+## More information:
 
 - **User Authentication and Authorization:**
   - Users can securely sign up, log in, and log out using their phone numbers with OTP verification.
