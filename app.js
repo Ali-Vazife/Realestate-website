@@ -29,10 +29,12 @@ app.options('*', cors());
 
 // Serving static files
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/scripts', express.static(path.join(__dirname, 'node_modules/')));
 
 app.use(
   helmet({
     contentSecurityPolicy: {
+      useDefaults: true,
       directives: {
         'script-src': [
           "'self'",
@@ -46,6 +48,7 @@ app.use(
         'img-src': [
           "'self'",
           'data:',
+          'https: data: blob:',
           'https://unpkg.com',
           'https://tile.openstreetmap.org',
           'blob:'

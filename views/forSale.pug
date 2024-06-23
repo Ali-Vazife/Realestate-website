@@ -27,6 +27,7 @@ block content
               option(value='Shiraz') شیراز
             label(for='building-type') نوع ملک:
             select#building-type(name='building-type')
+              option(value='default') همه
               option(value='apartment') آپارتمان مسکونی
               option(value='edari') دفتر کار اداری
               option(value='tejari') مغازه و تجاری
@@ -37,7 +38,7 @@ block content
             label(for='min-buy') بازه قیمت:
             .buy-inputs
               select#min-buy-select
-                option(value='0') حداقل
+                option(value='default') حداقل
                 option(value='50') 50 میلیون
                 option(value='70') 70 میلیون
                 option(value='100') 100 میلیون
@@ -58,7 +59,7 @@ block content
                 option(value='10000') 10 میلیارد
               span.range-separator -
               select#max-buy-select
-                option(value='0') حداکثر
+                option(value='default') حداکثر
                 option(value='50') 50 میلیون
                 option(value='70') 70 میلیون
                 option(value='100') 100 میلیون
@@ -80,7 +81,7 @@ block content
             label(for='min-size') متراژ:
             .size-inputs
               select#min-size-select
-                option(value='0') حداقل
+                option(value='default') حداقل
                 option(value='50') 50 مترمربع
                 option(value='60') 60 مترمربع
                 option(value='70') 70 مترمربع
@@ -100,7 +101,7 @@ block content
                 option(value='500') 1000 مترمربع
               span.range-separator -
               select#max-size-select
-                option(value='0') حداکثر
+                option(value='default') حداکثر
                 option(value='50') 50 مترمربع
                 option(value='60') 60 مترمربع
                 option(value='70') 70 مترمربع
@@ -119,9 +120,9 @@ block content
                 option(value='500') 900 مترمربع
                 option(value='500') 1000 مترمربع
             .sort-btns
-              button.btn.btn-success.btn-sm.fs-5.submit-modal-search(type='submit')
+              button.btn.btn-success.btn-sm.fs-5.submit-modal-search
                 | جستجو
-              a.btn.btn-light.btn-sm.fs-5.reset-modal(href='/for_sale')
+              button.btn.btn-light.btn-sm.fs-5.reset-modal
                 |  پاک کردن فیلتر 
       .filter.filterhouse
             button.filter-button(type='button' data-bs-toggle='modal' data-bs-target='#exampleModal')
@@ -141,6 +142,7 @@ block content
                     option(value='Shiraz') شیراز
                   label(for='building-type') نوع ملک:
                   select#building-type-mobile(name='building-type')
+                    option(value='default') همه
                     option(value='apartment') آپارتمان مسکونی
                     option(value='edari') دفتر کار اداری
                     option(value='tejari') مغازه و تجاری
@@ -153,7 +155,7 @@ block content
                       label(for='min-buy') مقدار خرید:
                       .buy-inputs
                         select#min-buy-select-mobile
-                          option(value='0') حداقل
+                          option(value='default') حداقل
                           option(value='50') 50 میلیون
                           option(value='100') 100 میلیون
                           option(value='150') 150 میلیون
@@ -183,7 +185,7 @@ block content
                           // Add more options as needed
                         span.range-separator -
                         select#max-buy-select-mobile
-                          option(value='0') حداکثر
+                          option(value='default') حداکثر
                           option(value='50') 50 میلیون
                           option(value='100') 100 میلیون
                           option(value='150') 150 میلیون
@@ -215,7 +217,7 @@ block content
                       label(for='min-size') متراژ:
                       .size-inputs
                         select#min-size-select-mobile
-                          option(value='0') حداقل
+                          option(value='default') حداقل
                           option(value='50') 50 مترمربع
                           option(value='60') 60 مترمربع
                           option(value='70') 70 مترمربع
@@ -235,7 +237,7 @@ block content
                           option(value='500') 1000 مترمربع
                         span.range-separator -
                         select#max-size-select-mobile
-                          option(value='0') حداکثر
+                          option(value='default') حداکثر
                           option(value='50') 50 مترمربع
                           option(value='60') 60 مترمربع
                           option(value='70') 70 مترمربع
@@ -254,11 +256,10 @@ block content
                           option(value='500') 900 مترمربع
                           option(value='500') 1000 مترمربع
                   .row.footer-modal-btn(style='margin-top: 1rem')
-                    a.col.btn.btn-info.fs-5.reset-modal(href='/for_sale')
+                    p.col.btn.btn-info.fs-5.reset-modal__mobile
                       | پاک کردن فیلتر
-                    button.col.btn.btn-success.fs-5.submit-modal-search(type='submit')
+                    button.col.btn.btn-success.fs-5.submit-mobile-modal-search
                       | تایید و جستجو
-
   main.container-fluid
     - if (!sales || sales.length === 0)
       .housefound.container-fluid
@@ -312,4 +313,4 @@ block content
               | #{persianDate}
     .second-houseinfo           
   script(src='/js/rentbuy.js')
-  script(src='/js/search.js')
+  script(src='/js/searchSale.js')

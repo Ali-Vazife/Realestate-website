@@ -177,3 +177,11 @@ const logout = async () => {
   }
 };
 if (logOutBtn) logOutBtn.addEventListener('click', logout);
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Set up the map for sale house
+  setupMap('saleMap', 'saleAddress');
+
+  // Set up the map for rent house
+  setupMap('rentMap', 'rentAddress');
+});

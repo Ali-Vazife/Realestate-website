@@ -27,6 +27,7 @@ block content
               option(value='Shiraz') شیراز
             label(for='building-type') نوع ملک:
             select#building-type(name='building-type')
+              option(value='default' selected) همه
               option(value='apartment') آپارتمان مسکونی
               option(value='edari') دفتر کار اداری
               option(value='tejari') مغازه و تجاری
@@ -36,7 +37,7 @@ block content
             label(for='min-rahn') مقدار رهن:
             .rahn-inputs
               select#min-rahn-select
-                option(value='0') حداقل
+                option(value='default' selected) حداقل
                 option(value='1') 1 میلیون
                 option(value='5') 5 میلیون
                 option(value='10') 10 میلیون
@@ -59,7 +60,7 @@ block content
                 option(value='500') 500 میلیون
               span.range-separator -
               select#max-rahn-select
-                option(value='0') حداکثر
+                option(value='default' selected) حداکثر
                 option(value='1') 1 میلیون
                 option(value='5') 5 میلیون
                 option(value='10') 10 میلیون
@@ -86,7 +87,7 @@ block content
             label(for='min-rent') مقدار اجاره:
             .rent-inputs
               select#min-rent-select
-                option(value='0') حداقل
+                option(value='default' selected) حداقل
                 option(value='1') 1 میلیون
                 option(value='5') 5 میلیون
                 option(value='10') 10 میلیون
@@ -110,7 +111,7 @@ block content
                 // Add more options as needed
               span.range-separator -
               select#max-rent-select
-                option(value='0') حداکثر
+                option(value='default' selected) حداکثر
                 option(value='1') 1 میلیون
                 option(value='5') 5 میلیون
                 option(value='10') 10 میلیون
@@ -134,7 +135,7 @@ block content
             label(for='min-size') متراژ:
             .size-inputs
               select#min-size-select
-                option(value='0') حداقل
+                option(value='default' selected) حداقل
                 option(value='50') 50 مترمربع
                 option(value='60') 60 مترمربع
                 option(value='70') 70 مترمربع
@@ -154,7 +155,7 @@ block content
                 option(value='500') 1000 مترمربع
               span.range-separator -
               select#max-size-select
-                option(value='0') حداکثر
+                option(value='default' selected) حداکثر
                 option(value='50') 50 مترمربع
                 option(value='60') 60 مترمربع
                 option(value='70') 70 مترمربع
@@ -173,9 +174,9 @@ block content
                 option(value='500') 900 مترمربع
                 option(value='500') 1000 مترمربع
             .sort-btns
-              button.btn.btn-success.btn-sm.fs-5.submit-modal-search(type='submit')
+              button.btn.btn-success.btn-sm.fs-5.submit-modal-search
                 | جستجو
-              a.btn.btn-light.btn-sm.fs-5.reset-modal(href='/for_rent')
+              button.btn.btn-light.btn-sm.fs-5.reset-modal
                 | پاک کردن
       .filter.filterhouse
               button.filter-button(type='button' data-bs-toggle='modal' data-bs-target='#exampleModal')
@@ -195,6 +196,7 @@ block content
                   option(value='Shiraz') شیراز
                 label(for='building-type') نوع ملک:
                 select#building-type-mobile(name='building-type')
+                  option(value='default' selected) همه
                   option(value='apartment') آپارتمان مسکونی
                   option(value='edari') دفتر کار اداری
                   option(value='tejari') مغازه و تجاری
@@ -208,7 +210,7 @@ block content
                     label(for='min-rahn') مقدار رهن:
                     .rahn-inputs
                       select#min-rahn-select-mobile
-                        option(value='0') حداقل
+                        option(value='default' selected) حداقل
                         option(value='1') 1 میلیون
                         option(value='5') 5 میلیون
                         option(value='10') 10 میلیون
@@ -231,7 +233,7 @@ block content
                         option(value='500') 500 میلیون
                       span.range-separator -
                       select#max-rahn-select-mobile
-                        option(value='0') حداکثر
+                        option(value='default' selected) حداکثر
                         option(value='1') 1 میلیون
                         option(value='5') 5 میلیون
                         option(value='10') 10 میلیون
@@ -260,7 +262,7 @@ block content
                     label(for='min-rent') مقدار اجاره:
                     .rent-inputs
                       select#min-rent-select-mobile
-                        option(value='0') حداقل
+                        option(value='default' selected) حداقل
                         option(value='1') 1 میلیون
                         option(value='5') 5 میلیون
                         option(value='10') 10 میلیون
@@ -284,7 +286,7 @@ block content
                         // Add more options as needed
                       span.range-separator -
                       select#max-rent-select-mobile
-                        option(value='0') حداکثر
+                        option(value='default' selected) حداکثر
                         option(value='1') 1 میلیون
                         option(value='5') 5 میلیون
                         option(value='10') 10 میلیون
@@ -314,7 +316,7 @@ block content
                     label(for='min-size') متراژ:
                     .size-inputs
                       select#min-size-select-mobile
-                        option(value='0') حداقل
+                        option(value='default' selected) حداقل
                         option(value='50') 50 مترمربع
                         option(value='60') 60 مترمربع
                         option(value='70') 70 مترمربع
@@ -334,7 +336,7 @@ block content
                         option(value='500') 1000 مترمربع
                       span.range-separator -
                       select#max-size-select-mobile
-                        option(value='0') حداکثر
+                        option(value='default' selected) حداکثر
                         option(value='50') 50 مترمربع
                         option(value='60') 60 مترمربع
                         option(value='70') 70 مترمربع
@@ -353,9 +355,9 @@ block content
                         option(value='500') 900 مترمربع
                         option(value='500') 1000 مترمربع
                 .row.footer-modal-btn(style='margin-top: 1rem')
-                  a.col.btn.btn-info.fs-5.reset-modal(href='/for_rent')
+                  p.col.btn.btn-info.fs-5.reset-modal__mobile
                     | پاک کردن فیلتر
-                  button.col.btn.btn-success.fs-5.submit-modal-search(type='submit')
+                  button.col.btn.btn-success.fs-5.submit-mobile-modal-search
                     | تایید و جستجو
   main.container-fluid
     - if (!rents || rents.length === 0)

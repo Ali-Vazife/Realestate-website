@@ -11,8 +11,10 @@ mixin navItem(link, text, active)
 block content
   link(rel='stylesheet' href='/style/account.css')
   link(rel='stylesheet' href='/style/newHouse.css')
-  script(src='https://unpkg.com/leaflet/dist/leaflet.js')
-  link(rel='stylesheet', href='https://unpkg.com/leaflet/dist/leaflet.css')
+  script(src='/scripts/leaflet/dist/leaflet.js')
+  link(rel='stylesheet', href='/scripts/leaflet/dist/leaflet.css')
+  //- script(src='https://unpkg.com/leaflet/dist/leaflet.js')
+  //- link(rel='stylesheet', href='https://unpkg.com/leaflet/dist/leaflet.css')
 
   main.main
     .user-view
@@ -247,11 +249,3 @@ block content
                 span.helper-text  برای ثبت ملک روی این گزینه یکبار کلیک کرده و صبر کنید تا وقتی نوار سبزرنگ تایید نمایش داده شد.
 
   script(src='/js/addHouse.js')
-  script.
-    document.addEventListener('DOMContentLoaded', function() {
-      // Set up the map for sale house
-      setupMap('saleMap', 'saleAddress');
-
-      // Set up the map for rent house
-      setupMap('rentMap', 'rentAddress');
-    });
