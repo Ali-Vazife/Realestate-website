@@ -159,8 +159,9 @@ function getBuildingTypeText(buildingType) {
 }
 
 function getPersianDate(date) {
-  const persianDate = new Date(date);
-  return persianDate.toLocaleDateString('fa-IR');
+  return moment(date)
+    .locale('fa')
+    .format('YYYY MMMM');
 }
 
 resetModal.addEventListener('click', () => {

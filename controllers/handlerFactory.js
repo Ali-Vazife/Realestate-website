@@ -72,9 +72,15 @@ exports.getAll = Model =>
   catchAsync(async (req, res, next) => {
     // To allow for nested Get reviews on tour (hack)
     let filter = {};
+    let reqQuery = req.query;
     if (req.params.rentsId) filter = { tour: req.params.rentsId };
 
-    const features = new APIFeatures(Model.find(filter), req.query)
+    if (reqQuery.city) {
+      const baseQuery = { approved: true };
+      reqQuery = { ...baseQuery, ...reqQuery };
+    }
+
+    const features = new APIFeatures(Model.find(filter), reqQuery)
       .filter()
       .sort()
       .limitFields()

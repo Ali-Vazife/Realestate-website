@@ -92,8 +92,9 @@ function getBuildingTypeText(buildingType) {
 }
 
 function getPersianDate(date) {
-  const persianDate = new Date(date); // Convert to Persian date here if needed
-  return persianDate.toLocaleDateString('fa-IR'); // Example for converting to Persian date
+  return moment(date)
+    .locale('fa')
+    .format('YYYY MMMM');
 }
 
 function resetForm() {
