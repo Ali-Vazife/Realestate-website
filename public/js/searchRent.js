@@ -63,7 +63,11 @@ function updateHouseAds(rents) {
                         <span class="card-text-span">رهن: ${rent.mortgagePrice >= 1000 ? `${(rent.mortgagePrice / 1000).toFixed(3).replace(/\.0+$/, '')} میلیارد` : `${rent.mortgagePrice} میلیون`}</span>
                     </li>
                 </ul>
+                <a class="btn btn-success view-card-link" href="/for_sale/${rent.id}">دیدن جزییات</a>
             </div>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">${getPersianDate(rent.date)}</small>
         </div>
     </div>`;
     container.appendChild(rentElement);

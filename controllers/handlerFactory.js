@@ -73,11 +73,13 @@ exports.getAll = Model =>
     // To allow for nested Get reviews on tour (hack)
     let filter = {};
     let reqQuery = req.query;
+    const baseURL = req.baseUrl;
+
     if (req.params.rentsId) filter = { tour: req.params.rentsId };
 
-    if (reqQuery.city) {
+    if (baseURL.includes('for_sale') || baseURL.includes('for_rent')) {
       const baseQuery = { approved: true };
-      reqQuery = { ...baseQuery, ...reqQuery };
+      reqQuery = { ...reqQuery, ...baseQuery };
     }
 
     const features = new APIFeatures(Model.find(filter), reqQuery)

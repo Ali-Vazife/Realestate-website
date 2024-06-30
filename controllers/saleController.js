@@ -7,7 +7,6 @@ const catchAsync = require('./../utils/catchAsync');
 const factory = require('./handlerFactory');
 
 const multerStorage = multer.memoryStorage(); //keep image in the memory
-
 const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith('image')) {
     cb(null, true);
@@ -15,14 +14,11 @@ const multerFilter = (req, file, cb) => {
     cb(new AppError('Not an image! Please upload only images.', 400), false);
   }
 };
-
 const upload = multer({
   storage: multerStorage,
   fileFilter: multerFilter
 });
-
 exports.uploadSaleImages = upload.fields([{ name: 'images', maxCount: 6 }]);
-
 exports.resizeSaleImages = catchAsync(async (req, res, next) => {
   // console.log('1:', req.files.images);
   // console.log('2:', req.files.image);
