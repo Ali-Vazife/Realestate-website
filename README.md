@@ -1,6 +1,9 @@
 # RealEstate Website
 
-Welcome to the RealEstate Website. Our project, built on a robust MVC architecture, utilizes Node.js, Express, MongoDB, and Mongoose for the backend, with Pug as the template engine.
+Welcome to the RealEstate Website. Our project, built on a robust MVC architecture, utilizes **Node.js**, **Express**, **MongoDB**, and **Mongoose** for the backend, with Pug as the template engine.
+
+## Project Demo
+![GIF](https://github.com/Ali-Vazife/Realstate-website/blob/main/website.gif)
 
 ## More information:
 
@@ -12,6 +15,20 @@ Welcome to the RealEstate Website. Our project, built on a robust MVC architectu
 - **Security Best Practices:**
 
   - Our project prioritizes security with measures against brute force attacks, XSS attacks, DoS attacks, NoSQL query injection, and other industry best practices.
+    
+  - **bcryptjs**: Used for hashing passwords to securely store user credentials in the database. Hashing passwords is a critical security measure to prevent plain text passwords from being compromised.
+  
+  - **express-mongo-sanitize**: Prevents MongoDB Operator Injection by sanitizing user-supplied data, removing any MongoDB operators from input, which can help protect against NoSQL injection attacks.
+  
+  - **express-rate-limit**: Helps to limit repeated requests to public APIs and endpoints, providing protection against brute-force attacks by controlling the rate of incoming requests.
+  
+  - **helmet**: Enhances your app's security by setting various HTTP headers, such as `Content-Security-Policy`, `X-Frame-Options`, and `X-XSS-Protection`, to protect against well-known web vulnerabilities.
+  
+  - **hpp**: Protects against HTTP Parameter Pollution attacks by clearing the query string parameters of any duplicates, ensuring that only the last parameter value is used.
+  
+  - **jsonwebtoken**: Provides a secure way to transmit information between parties as a JSON object, ensuring the integrity and authenticity of the data with a signature.
+  
+  - **xss-clean**: Sanitizes user input to prevent cross-site scripting (XSS) attacks, which can exploit vulnerabilities by injecting malicious scripts into web pages viewed by other users.
 
 - **User Profile Customization:**
 
@@ -66,10 +83,6 @@ Welcome to the RealEstate Website. Our project, built on a robust MVC architectu
 ├── package.json
 └── server.js
 ```
-
-## Project Demo
-
-![GIF](https://github.com/Ali-Vazife/Realstate-website/blob/main/website.gif)
 
 ## Getting Started
 
