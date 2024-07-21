@@ -9,8 +9,8 @@ Welcome to the RealEstate Website. Our project, built on a robust MVC architectu
 
 - **User Authentication and Authorization:**
 
+  - Token-Based Authentication using JWT.
   - Users can securely sign up, log in, and log out using their phone numbers with OTP verification.
-  - JWT tokens are employed for authentication, ensuring a secure and reliable user experience.
 
 - **Security Best Practices:**
 
